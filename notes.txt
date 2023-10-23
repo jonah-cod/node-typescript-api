@@ -1,0 +1,4 @@
+creating the entry file
+Using enviroment variables
+building our first endpoint
+build a crud operation endpoints
