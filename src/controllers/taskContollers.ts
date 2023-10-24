@@ -38,12 +38,10 @@ export function deleteTaskController(req:Request, res:Response){
 
 export function addTaskController(req: Request, res:Response){
       let new_task = req.body;
-      let id = Date.now();
-      new_task.id = id;
 
       addTask(new_task);
       res.json({
-            id,
+            id: new_task.id,
             sucess: true
       })
 }

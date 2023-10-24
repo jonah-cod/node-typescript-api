@@ -1,5 +1,7 @@
 import { tasks } from "../data";;
 import { Task } from "../Types/interface";
+import { dbConnectService } from "./dbConnectService";
+import sql from 'mssql'
 
 export function getTasks(){
       return tasks;
@@ -11,8 +13,29 @@ export function getTasks(){
       return null
     }
 
-    export function addTask(task: Task){
-      tasks.push(task)
+    export async function addTask(task: Task){
+      // tasks.push(task)
+      let { id, title, completed } = task;
+      let connectionPool = await dbConnectService();
+      let query = `INSERT INTO tasks (task_id, task_title, completed) VALUES ('${id}', '${title}', '${completed}')`;
+
+      connectionPool?.connect(async(err)=>{
+        if(err){
+          console.log(err)
+        }else{
+         let results = await  connectionPool?.request()
+                                             .query(query)
+         console.log(results)
+        }
+      })
+      
+
+
+          
+
+
+      
+
     }
 
     export function deleteTask(id: number){
