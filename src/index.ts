@@ -1,14 +1,16 @@
-import express, {Request, Response} from 'express';
+import express from 'express';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
-import router from './routes/taskRoutes';
+import taskrouter from './routes/taskRoutes';
+import userRouter from './routes/userRoutes';
 
 
 const app = express();
 app.use(express.json())
 
-app.use(router)
+app.use('/tasks', taskrouter)
+app.use('/users', userRouter)
 
 const port = process.env.PORT || 5000;
 

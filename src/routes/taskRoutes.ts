@@ -6,17 +6,17 @@ import { addTaskController,
          getSpecificTaskController,
          updateTaskController, } from "../controllers/taskContollers";
 
-const router: Router  = Router()
+const taskrouter: Router  = Router()
 
-router.get('/', appTest)
-router.get("/tasks", getAllTasksController)
-router.get('/tasks/:taskID', getSpecificTaskController)
-router.delete("/tasks/:taskID", deleteTaskController)
-router.post("/tasks", addTaskController)
-router.put("/tasks/:taskID", updateTaskController)
-
-
+taskrouter.get('/', appTest)
+taskrouter.get("/", getAllTasksController)
+taskrouter.get('/:taskID', getSpecificTaskController)
+taskrouter.delete("/:taskID", deleteTaskController)
+taskrouter.post("/", addTaskController)
+taskrouter.put("/:taskID", updateTaskController)
 
 
 
-export default router;
+
+
+export default taskrouter;
